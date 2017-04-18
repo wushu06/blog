@@ -8737,14 +8737,15 @@ table.dataTable thead .sorting:after {
     Author URL: https://bootstrapmade.com
 */
 
-body {
+.body {
 	font-size: 15px;
     line-height: 1.52;
     color: #717f86;
     font-size: 16px;
 	font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    overflow-x: hidden; 
+    overflow-x: hidden;
+    padding-top: 0px;
 }
 ol, ul {
 	list-style: none;
@@ -8762,7 +8763,7 @@ table {
 	border-spacing: 0;
 }
 #banner{
-    background: url(../img/banner-bg.jpg) no-repeat center top;
+    background: url(../images/banner-bg.jpg) no-repeat center top;
     background-size: cover;
     min-height: 630px;
 }
