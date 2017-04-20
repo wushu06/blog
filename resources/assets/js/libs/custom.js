@@ -8,10 +8,10 @@ function closeNav() {
 
 (function ($) {
     // Instantiate MixItUp:
-    $('#Container').mixItUp();
+
 
     // Add smooth scrolling to all links in navbar + footer link
-    $(".sidenav a").on('click', function(event) {
+    $(".link").on('click', function(event) {
         event.preventDefault();
         var hash = this.hash;
 
@@ -21,5 +21,11 @@ function closeNav() {
             window.location.hash = hash;
         });
     });
+    $('#Container2').mixItUp();
     
 })(jQuery);
+
+$(function () {
+
+    $('#Container2').mixItUp();
+});

@@ -27,7 +27,7 @@
             <div class="container">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                     <a href="#about">About</a>
                     <a href="#event">Event</a>
                     <a href="#menu-list">Menu</a>

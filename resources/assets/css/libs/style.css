@@ -325,7 +325,7 @@ table {
 {
     color: #000;
 }
-#Container .mix{
+#Container2 .mix{
     display: none;
 }
 .menu-restaurant{
@@ -434,6 +434,13 @@ table {
     color: #fff;
     text-transform: uppercase;
     margin: 0 5px;
+}
+/*******
+my styling
+ */
+.btn-style{
+    background: transparent;
+    border-color: #FFB03B;
 }
 @media (min-width: 768px) and (max-width: 980px) {
     .content-holder h2 {

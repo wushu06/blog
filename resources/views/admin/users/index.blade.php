@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <h1>Users</h1>
-    <table class="table table-bordered">
+    <table class="table">
         <thead>
         <tr>
             <th>ID</th>
@@ -20,7 +20,10 @@
 
                 <tr>
                     <td>{{$user->id}}</td>
-                    <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
+                    <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}
+
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a></td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->role->name}}</td>
                     <td>{{$user->is_active == 1?'Active':'Not Active'}}</td>

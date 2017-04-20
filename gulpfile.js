@@ -30,8 +30,10 @@ elixir(function(mix) {
             'libs/bootstrap.js',
             'libs/metisMenu.js',
             'libs/sb-admin-2.js',
+            'libs/jquery.mixitup.min.js',
             'libs/scripts.js',
             'libs/custom.js'
+
 
 
         ], './public/js/libs.js')

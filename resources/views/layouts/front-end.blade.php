@@ -27,24 +27,22 @@
             <div class="container">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a href="{{ url('/home') }}">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#event">Event</a>
-                    <a href="#menu-list">Menu</a>
-                    <a href="#contact">Book a table</a>
+                    <a href="{{ url('/') }}">Home</a>
+                    <a href="#about" class="link">About</a>
+                    <a href="#event" class="link">Event</a>
+                    <a href="#menu-list" class="link">Menu</a>
+                    <a href="#contact" class="link">Book a table</a>
+                    @if (Auth::check())
+                        <a href="{{ url('/admin') }}">Admin</a>
+
+                        @endif
                     @if (Auth::guest())
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Register</a>
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+                         <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+
                     @endif
                 </div>
                 <!-- Use any element to open the sidenav -->
@@ -55,6 +53,9 @@
             <div class="row">
                 <div class="inner text-center">
                     <h1 class="logo-name">Salad Island</h1>
+                    @if(Auth::check())
+                    <h2> Wlecome {{ Auth::user()->name }}</h2>
+                    @endif
                     <h2>Food To fit your lifestyle & health.</h2>
                     <p>Specialized in Algerian Cuisine!!</p>
                 </div>
@@ -258,7 +259,10 @@
 </footer>
 <!-- / footer -->
 
-<script src="{{asset('js/libs.js')}}"></script>
+<script src="{{asset('js/libs.js')}}">
+
+
+</script>
 
 </body>
 </html>

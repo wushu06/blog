@@ -14,9 +14,9 @@
 Route::get('/index', function () {
     return view('welcome');
 });
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('index');
-});
+});*/
 
 Route::get('/test', function () {
     return view('test');
@@ -27,6 +27,9 @@ Route::get('/test', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'FrontEnd@index');
+Route::get('/posts', 'FrontEnd@posts');
+
 
 
 //Route::resource('/admin/users', 'AdminUsersController');
@@ -40,6 +43,7 @@ Route::group(['middleware'=>'admin'], function(){
     });
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
+    Route::resource('/admin/category', 'AdminCategoryController');
 
 });
 
