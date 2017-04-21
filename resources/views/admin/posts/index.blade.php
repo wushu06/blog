@@ -28,7 +28,7 @@
                     </td>
                     <td>{{$post->category_id?$post->category->name:'phpno oop'}}</td>
                     <td><img src="{{$post->photo? '/images/'.$post->photo->name: '/images/dz.jpg'}}" height="100px"></td>
-                    <td>{{$post->title}}</td>
+                    <td><a href="{{url('/posts', $post->id)}}">{{$post->title}}</a></td>
                     <td>{{$post->body}}</td>
                     <td>{{$post->created_at->diffforhumans()}}</td>
                     <td>{{$post->updated_at->diffforhumans()}}</td>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCommentsController extends Controller
 {
@@ -16,6 +18,8 @@ class AdminCommentsController extends Controller
     public function index()
     {
         //
+        $comments = Comment::all();
+        return view('admin.comments.index ', compact('comments'));
     }
 
     /**
@@ -37,6 +41,19 @@ class AdminCommentsController extends Controller
     public function store(Request $request)
     {
         //
+        $user = Auth::user();
+        $date = [
+            'author'=>$user->name,
+            'post_id'=>$request->post_id,
+            'body'=>$request->body,
+            'email'=>$user->email
+
+        ];
+     // $comments = Comment::findOrFail();
+      Comment::create($request->all());
+      $request->session()->flash('comment_message', 'your comments has been submitted and awaiting for approval, Thanks');
+      return redirect()->back();
+
     }
 
     /**
@@ -71,6 +88,8 @@ class AdminCommentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Comment::findOrFail($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -82,5 +101,7 @@ class AdminCommentsController extends Controller
     public function destroy($id)
     {
         //
+        Comment::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

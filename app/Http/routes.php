@@ -11,6 +11,9 @@
 |
 */
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/index', function () {
     return view('welcome');
 });
@@ -28,7 +31,13 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'FrontEnd@index');
-Route::get('/posts', 'FrontEnd@posts');
+Route::get('/posts/{id}', 'FrontEnd@show');
+Route::post('/test/', function () {
+
+  //  User::where('name', 'LIKE', '%'.$search.'%')->get();
+
+    return view('test', ['name' => 'James']);
+});
 
 
 
@@ -37,13 +46,20 @@ Route::get('/posts', 'FrontEnd@posts');
 
 Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin/', function(){
+        $user = Auth::user()->id;
 
-        return view('admin.index');
+        return view('admin.index', ['user'=>$user]);
 
     });
+
+
+
     Route::resource('/admin/users', 'AdminUsersController');
     Route::resource('/admin/posts', 'AdminPostsController');
     Route::resource('/admin/category', 'AdminCategoryController');
+    Route::resource('/admin/comment', 'AdminCommentsController');
+    Route::resource('/admin/reply', 'CommentReplyController');
+
 
 });
 

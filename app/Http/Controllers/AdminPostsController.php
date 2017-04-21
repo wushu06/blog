@@ -96,7 +96,7 @@ class AdminPostsController extends Controller
     {
         //
         $post = Post::findOrFail($id);
-
+        $input = $request->all();
         if($file = $request->file('photo_id')){
             $name = time().$file->getClientOriginalName();
             $file->move('images', $name);
