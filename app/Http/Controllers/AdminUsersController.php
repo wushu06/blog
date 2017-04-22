@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUsersController extends Controller
 {
@@ -32,7 +33,9 @@ class AdminUsersController extends Controller
     public function create()
     {
         //
-        return view('admin.users.create');
+        $id=Auth::user()->id;
+        $user = User::find($id); //for the profile
+        return view('admin.users.create', compact('user'));
     }
 
     /**
@@ -44,6 +47,8 @@ class AdminUsersController extends Controller
     public function store(Request $request)
     {
         //
+
+
         if(trim($request->password=='')){
             $input = $request->except('password');
         }else{

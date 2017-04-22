@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\PostCreateRequest;
 use App\Photo;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,8 +22,10 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
+        $id=Auth::user()->id;//for the profile
+        $user = User::find($id); //for the profile
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts','user'));
     }
 
     /**
@@ -33,8 +36,10 @@ class AdminPostsController extends Controller
     public function create()
     {
         //
+        $id=Auth::user()->id;
+        $user = User::find($id); //for the profile
         $categories = Category::lists('name', 'id')->all();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories','user'));
     }
 
     /**
@@ -79,9 +84,11 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         //        //
+        $id=Auth::user()->id;
+        $user = User::find($id); //for the profile
         $post = Post::findOrFail($id);
         $categories = Category::lists('name', 'id')->all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories','user'));
 
     }
 

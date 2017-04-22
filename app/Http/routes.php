@@ -13,6 +13,7 @@
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/index', function () {
     return view('welcome');
@@ -32,12 +33,18 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'FrontEnd@index');
 Route::get('/posts/{id}', 'FrontEnd@show');
-Route::post('/test/', function () {
+Route::get('/test/send', function () {
 
-  //  User::where('name', 'LIKE', '%'.$search.'%')->get();
+    $data = [
+        'title'=>'hi from me',
+        'content'=>'this is mail content'
+    ];
+    Mail::send('test', $data, function($message){
+        $message->to('nourwushu@gmail.com', 'nour')->subject('this is subject');
+    });
 
-    return view('test', ['name' => 'James']);
 });
+Route::post('/', 'FrontEnd@mail');
 
 
 

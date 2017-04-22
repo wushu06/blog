@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCategoryController extends Controller
 {
@@ -17,8 +19,10 @@ class AdminCategoryController extends Controller
     public function index()
     {
         //
+        $id=Auth::user()->id;
+        $user = User::find($id); //for the profile
         $categories = Category::all();
-        return view ('admin.categories.index', compact('categories'));
+        return view ('admin.categories.index', compact('categories','user'));
     }
 
     /**

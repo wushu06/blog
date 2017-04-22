@@ -9,6 +9,7 @@ use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 class FrontEnd extends Controller
 {
@@ -39,5 +40,23 @@ class FrontEnd extends Controller
 
 
         return view('/posts', compact('posts', 'categories', 'comments', 'replies'));
+    }
+    public function mail(Request $request){
+      $title = $request->title;
+        $body = $request->body;
+      $data = [
+            'title' =>$title,
+            'content'=> $body
+
+        ];
+
+
+         Mail::send('/', $data, function($message){
+            $message->to('nourwushu@gmail.com', 'nour')->subject('Message From Laravel');
+        });
+       /*  return redirect()->back();
+
+*/
+
     }
 }

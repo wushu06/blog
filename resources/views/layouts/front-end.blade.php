@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Delicious</title>
+    <title>SaladIsland</title>
     <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -29,9 +29,9 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                     <a href="{{ url('/') }}">Home</a>
                     <a href="#about" class="link">About</a>
-                    <a href="#event" class="link">Event</a>
-                    <a href="#menu-list" class="link">Menu</a>
-                    <a href="#contact" class="link">Book a table</a>
+                    <a href="#event" class="link">Latest</a>
+                    <a href="#menu-list" class="link">Recipes</a>
+                    <a href="#contact" class="link">Contact</a>
                     @if (Auth::check())
                         <a href="{{ url('/admin') }}">Admin</a>
 
@@ -53,6 +53,7 @@
             <div class="row">
                 <div class="inner text-center">
                     <h1 class="logo-name">Salad Island</h1>
+                    <hr>
                     @if(Auth::check())
                         <h2> Wlecome {{ Auth::user()->name }}</h2>
                     @endif
